@@ -1,0 +1,82 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zdjęcia</title>
+<style>
+    #slider {
+        display: flex; 
+        /* transform: translateX(-100px); */
+    }
+    </style>
+
+</head>
+<body>
+    <input type="text" name="">
+    <button>Pobierz zdjęcie</button>
+    <div id="slider">
+        <img src="http://picsum.photos/600/400?r=1" alt="">
+        <img src="http://picsum.photos/600/400?r=2" alt="">
+        <img src="http://picsum.photos/600/400?r=3" alt="">
+        <img src="http://picsum.photos/600/400?r=4" alt="">
+    </div>
+        
+
+    <img src="" alt="">
+    <!-- <script>
+
+
+        //1. pobierz uchwyt do buttona    
+        const przycisk = document.querySelector('button')
+        //2. dodaj obsługę kliknięcia buttona
+        przycisk.addEventListener('click', ()=>{
+
+        })       
+        //3. pobierz zawartość inputa (.value)
+const sciezka = document.querySelector('input').value
+const zdjeciePojemnik = document.querySelector('img')
+zdjeciePojemnik.src = sciezka
+        //4. przypisz zawartość inputa do właściwości .src obiektu img
+        
+    </script> -->
+
+    <script type="text/javascript">
+        // let animInterval = setInterval(animacja, 16)
+
+        let polozenie = 0
+        let czyAnimowac  = true
+
+        const slider =document.querySelector('#slider')
+        slider.addEventListener('mouseover', ()=> {
+           czyAnimowac = false
+        })
+        slider.addEventListener('mouseout', ()=>{
+          czyAnimowac = true
+            animacja()
+
+        })
+        let krok = -1
+        animacja()
+        
+        function animacja() {
+            console.log(polozenie)
+       
+
+
+            if(polozenie < -1000 ) {
+                krok = 1
+            }
+            if(polozenie > 0) {
+                krok = -1
+            }
+            polozenie += krok
+            slider.style.transform = `translateX(${polozenie}px)`
+            if(czyAnimowac) {
+            requestAnimationFrame(animacja)
+            }
+        }
+    </script>
+</body>
+</html>
